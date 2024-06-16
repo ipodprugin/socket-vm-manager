@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  server:
+    container_name: vm_manager_serv
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    command: bash -c 'python3 main.py'
+    volumes:
+      - ./backend/database:/backend/database/
+      - ./backend/server:/backend/server/
+    ports:
+      - ${SERVER_PORT}:8080
+    restart: unless-stopped
+    env_file:
+      - .env
+    network_mode: host
+
+  db:
+    container_name: vm_manager_db
+    image: postgres
+    build:
+      context: db
+      dockerfile: Dockerfile
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - dbdata:/var/lib/postgres/data
+    restart: unless-stopped
+    env_file:
+      - .env
+
+volumes:
+  dbdata:
