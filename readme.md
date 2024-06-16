@@ -3,7 +3,7 @@
 ---
 
 ```bash
-git clone ... && cd socket-vm_manager
+git clone https://github.com/ipodprugin/socket-vm-manager.git && cd socket-vm-manager
 ```
 
 ## Запуск сервера:
