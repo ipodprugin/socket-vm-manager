@@ -2,6 +2,11 @@
 
 ---
 
+## Tech stack:
+- asyncio
+- pydantic
+- docker
+
 ```bash
 git clone https://github.com/ipodprugin/socket-vm-manager.git && cd socket-vm-manager
 cp example.env .env
